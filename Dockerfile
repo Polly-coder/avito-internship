@@ -1,15 +1,21 @@
-FROM gradle:4.7.0-jdk8-alpine AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle build --no-daemon 
+FROM python:3.12-slim
 
-FROM openjdk:8-jre-slim
+RUN apt-get -y update \
+    && apt-get install -y postgresql postgresql-contrib gcc python3-dev musl-dev \
+    # Cleanup apt cache
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 8080
+WORKDIR /usr/src/backend
 
-RUN mkdir /app
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
+COPY . .
 
+#EXPOSE 8080
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+#CMD ["python", "manage.py", "runserver", "127.0.0.1:8000"]
