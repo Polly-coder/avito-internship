@@ -39,8 +39,9 @@ class OrganizationResponsible(models.Model):
     class Meta:
         managed = False
         db_table = 'organization_responsible'
-        
 
+# убрать
+'''
 class TenderStatus(models.Model):
     name = models.CharField(max_length=50)
 
@@ -49,15 +50,19 @@ class TenderStatus(models.Model):
     
     class Meta:
         db_table = 'tender_status'
-    
+ '''   
 
 class Tender(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    service_type = models.CharField(max_length=50) #"Construction",
-    status = models.ForeignKey(TenderStatus, on_delete=models.CASCADE)
-    organization_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    creator_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    #service_type = models.CharField(max_length=50) #"Construction",
+    serviceType = models.CharField(max_length=50)
+    #status = models.ForeignKey(TenderStatus, on_delete=models.CASCADE)
+    status = models.CharField(max_length=50)
+    #organization_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organizationId = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    #creator_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    creatorUsername = models.CharField(max_length=50)
     #"creatorUsername": "user1" по юзернейму находим пользователя и дабавляем id
 
     def __str__(self) -> str:
@@ -66,6 +71,8 @@ class Tender(models.Model):
     class Meta:
         db_table = 'tender'
 
+# убрать
+'''
 class BidStatus(models.Model):
     name = models.CharField(max_length=50)
 
@@ -74,15 +81,19 @@ class BidStatus(models.Model):
     
     class Meta:
         db_table = 'bid_status'
-
+'''
 
 class Bid(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    status = models.ForeignKey(BidStatus, on_delete=models.CASCADE)
-    tender_id = models.ForeignKey(Tender, on_delete=models.CASCADE)
-    organization_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    creator_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    #status = models.ForeignKey(BidStatus, on_delete=models.CASCADE)
+    status = models.CharField(max_length=50)
+    #tender_id = models.ForeignKey(Tender, on_delete=models.CASCADE)
+    tenderId = models.ForeignKey(Tender, on_delete=models.CASCADE)
+    #organization_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organizationId = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    #creator_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    creatorUsername = models.CharField(max_length=50)
     #"creatorUsername": "user1" по юзернейму находим пользователя и дабавляем id
 
     def __str__(self) -> str:

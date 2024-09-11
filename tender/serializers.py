@@ -2,12 +2,14 @@ from rest_framework import serializers
 from tender.models import Tender, Bid
 
 class TenderSerializer(serializers.ModelSerializer):
+    #creator_name = serializers.CharField(max_length=50)
+
     class Meta:
         model = Tender
-        fields = ['id', 'name', 'description', 'service_type','status', 'organization_id', 'creator_id']
+        fields = ['name', 'description', 'serviceType', 'status', 'organizationId', 'creatorUsername']
 
 class BidSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bid
-        fields = ['id', 'name', 'description', 'status', 'tender_id', 'organization_id', 'creator_id']
+        fields = ['name', 'description', 'status', 'tenderId', 'organizationId', 'creatorUsername']
 
