@@ -41,12 +41,14 @@ class TenderNewView(APIView):
 
 class TenderView(APIView):
     def get(self, request):
-        limit = int(request.GET.get('limit', 5)) # или по дефолту все?
+        limit = int(request.GET.get('limit', 5))
         offset = int(request.GET.get('offset', 0))
         service_type = request.GET.get('service_type', None)
         if service_type:
-            tenders = Tender.objects.filter(serviceType__in = service_type)[offset:limit]
-        else: tenders = Tender.objects.all()[offset:limit]
+            if not service_type in ('Construction', 'Delivery', 'Manufacture'):
+                return Response({'reason':'Задан некорректный тип услуги'}, 400)
+            tenders = Tender.objects.filter(serviceType = service_type).order_by("name")[offset:limit]
+        else: tenders = Tender.objects.all().order_by("name")[offset:limit]
         serializer_for_tenders = TenderSerializer(instance = tenders, many = True)
         return Response(serializer_for_tenders.data)
     
