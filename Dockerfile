@@ -26,4 +26,3 @@ EXPOSE 8080
 #CMD ["python", "manage.py", "runserver"]
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
 ENTRYPOINT ["/usr/src/backend/entrypoint.prod.sh"]
-#CMD ["python", "manage.py", "runserver", "127.0.0.1:8000"]
