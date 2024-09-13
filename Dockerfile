@@ -10,18 +10,19 @@ WORKDIR /usr/src/backend
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV POSTGRES_DATABASE=postgres10
-ENV POSTGRES_USERNAME=postgres
-ENV POSTGRES_PASSWORD=postgres123
-ENV POSTGRES_HOST=host.docker.internal
-ENV POSTGRES_PORT=5433
+ENV POSTGRES_DATABASE=cnrprod1725771832-team-78752
+ENV POSTGRES_USERNAME=cnrprod1725771832-team-78752
+ENV POSTGRES_PASSWORD=cnrprod1725771832-team-78752
+ENV POSTGRES_HOST=rc1b-5xmqy6bq501kls4m.mdb.yandexcloud.net
+ENV POSTGRES_PORT=6432
+ENV target_session_attrs=read-write
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8080
 #CMD ["python", "manage.py", "runserver"]
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
 ENTRYPOINT ["/usr/src/backend/entrypoint.prod.sh"]
