@@ -10,8 +10,8 @@ class TenderSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'serviceType', 'status', 'organizationId', 'version', 'createdAt', 'creatorUsername']
 
 class BidSerializer(serializers.ModelSerializer):
-    creatorUsername = serializers.CharField(max_length = 50)
+    #creatorUsername = serializers.CharField(max_length = 50)
     class Meta:
         model = Bid
-        fields = ['name', 'description', 'status', 'tenderId', 'organizationId', 'authorType', 'authorId', 'version', 'createdAt', 'creatorUsername']
+        fields = ['id', 'name', 'description', 'status', 'tenderId', 'authorType', 'authorId', 'version', 'createdAt']
 
