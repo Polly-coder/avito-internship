@@ -17,17 +17,18 @@ docker run -d -p 8080:8080 testapi
 Приложение запустится по адресу [0.0.0.0:8080](http://0.0.0.0:8080) и будет готово принимать запросы.
 
 Доступные эндпоинты:
-/api/ping/  
-/api/tenders/  
-/api/tenders/new/  
-/api/tenders/my/  
-/api/tenders/{tender uuid}/status/  
-/api/tenders/{tender uuid}/edit/  
-/api/bids/new/  
-/api/bids/my/  
-/api/bids/{tender uuid}/list/  
-/api/bids/{bid uuid}/status/  
-/api/bids/{bid uuid}/edit/  
+
+/api/ping/ - проверка доступности сервера  
+/api/tenders/ - получение списка тендеров с возможностью фильтрации по типу услуг  
+/api/tenders/new/ - создание нового тендера  
+/api/tenders/my/ - получить тендеры пользователя   
+/api/tenders/{tender uuid}/status/ - получение/изменения статуса тендера  
+/api/tenders/{tender uuid}/edit/ - редактирование тендера  
+/api/bids/new/ - создание нового предложения  
+/api/bids/my/ - получить предложения пользователя   
+/api/bids/{tender uuid}/list/ - получение списка предложений для тендера  
+/api/bids/{bid uuid}/status/ - получение/изменения статуса предложения  
+/api/bids/{bid uuid}/edit/ - редактирование параметров предложения  
 
 _P.S. На момент 16.09.24 приложение также доступно по адресу https://cnrprod1725771832-team-78752-33202.avito2024.codenrock.com_
 
