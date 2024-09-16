@@ -1,10 +1,11 @@
 ## Инструкция по запуску
-Для локального запуска API необходимо скачать данный репозиторий либо с помощью команды git clone либо скачать zip.
+Для локального запуска приложения необходимо скачать данный репозиторий либо с помощью команды git clone либо скачать zip.
 ```
 git clone https://github.com/Polly-coder/zadanie-6105.git
 git cd zadanie-6105
 ```
 Приложение собирается из находящящегося в проекте Dockerfile и отвечает по порту 8080.
+
 Находясь в корневом каталоге проекта, необходимо выполнить команды:
 ```
 docker build -t testapi .
@@ -16,17 +17,17 @@ docker run -d -p 8080:8080 testapi
 Приложение запустится по адресу [0.0.0.0:8080](http://0.0.0.0:8080) и будет готово принимать запросы.
 
 Доступные эндпоинты:
-/api/ping/
-/api/tenders/
-/api/tenders/new/
-/api/tenders/my/
-/api/tenders/{tender uuid}/status/
-/api/tenders/{tender uuid}/edit/
-/api/bids/new/
-/api/bids/my/
-/api/bids/{tender uuid}/list/
-/api/bids/{bid uuid}/status/
-/api/bids/{bid uuid}/edit/
+/api/ping/  
+/api/tenders/  
+/api/tenders/new/  
+/api/tenders/my/  
+/api/tenders/{tender uuid}/status/  
+/api/tenders/{tender uuid}/edit/  
+/api/bids/new/  
+/api/bids/my/  
+/api/bids/{tender uuid}/list/  
+/api/bids/{bid uuid}/status/  
+/api/bids/{bid uuid}/edit/  
 
 _P.S. На момент 16.09.24 приложение также доступно по адресу https://cnrprod1725771832-team-78752-33202.avito2024.codenrock.com_
 
